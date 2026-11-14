@@ -1,1 +1,99 @@
 
+import java.util.Scanner;
+
+public class FoodOrder {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int choice;
+        int foodChoice;
+        int quantity;
+        double price = 0;
+        double total = 0;
+        double payment;
+
+        System.out.println("===== WELCOME TO FOOD ORDERING SYSTEM =====");
+
+        System.out.println("1. Order Food");
+        System.out.println("2. Exit");
+
+        System.out.print("Enter your choice: ");
+        choice = sc.nextInt();
+
+        if (choice == 1) {
+
+            System.out.println("\n===== FOOD MENU =====");
+            System.out.println("1. Idli  - Rs. 20");
+            System.out.println("2. Dosa  - Rs. 40");
+            System.out.println("3. Upma  - Rs. 30");
+            System.out.println("4. Exit");
+
+            while (true) {
+
+                System.out.print("\nEnter food choice: ");
+                foodChoice = sc.nextInt();
+
+                if (foodChoice == 1) {
+                    price = 20;
+                    System.out.println("You selected Idli");
+                }
+                else if (foodChoice == 2) {
+                    price = 40;
+                    System.out.println("You selected Dosa");
+                }
+                else if (foodChoice == 3) {
+                    price = 30;
+                    System.out.println("You selected Upma");
+                }
+                else if (foodChoice == 4) {
+                    break;
+                }
+                else {
+                    System.out.println("Invalid food choice!");
+                    continue;
+                }
+
+                System.out.print("Enter quantity: ");
+                quantity = sc.nextInt();
+
+                double amount = price * quantity;
+                total = total + amount;
+
+                System.out.println("Item Amount: Rs." + amount);
+                System.out.println("Total Amount: Rs." + total);
+
+            }
+
+            System.out.println("\n===== FINAL BILL =====");
+            System.out.println("Total Amount: Rs." + total);
+
+            if (total > 0) {
+                System.out.print("Enter payment amount: ");
+                payment = sc.nextDouble();
+
+                if (payment >= total) {
+                    System.out.println("Payment Successful!");
+                    System.out.println("Balance: Rs." + (payment - total));
+                }
+                else {
+                    System.out.println("Insufficient Payment!");
+                    System.out.println("Pending Amount: Rs." + (total - payment));
+                }
+            }
+
+            System.out.println("Thank you! Visit Again.");
+
+        }
+        else if (choice == 2) {
+            System.out.println("Thank you! Have a nice day.");
+        }
+        else {
+            System.out.println("Invalid choice!");
+        }
+
+        sc.close();
+    }
+}
+
